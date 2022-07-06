@@ -1,0 +1,18 @@
+spring:
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  port: 8090
+
+logging:
+  level:
+    neostudy: DEBUG
+
+services:
+  deal:
+    url: http://localhost:8081
+  application:
+    url: http://localhost:8082
