@@ -12,6 +12,6 @@ logging:
 
 services:
   deal:
-    url: http://localhost:8081
+    url: http://deal:8081
   application:
-    url: http://localhost:8082
+    url: http://application:8082
