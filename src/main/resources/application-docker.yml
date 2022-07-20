@@ -1,0 +1,5 @@
+services:
+  deal:
+    url: http://deal:8081
+  application:
+    url: http://application:8082
