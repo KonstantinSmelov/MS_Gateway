@@ -1,4 +1,4 @@
-# MS-Gateway
+# MS-Gateway + docker-compose.yml (в корне проекта)
 
 [![Build status](https://github.com/KonstantinSmelov/Gateway/actions/workflows/maven.yml/badge.svg)](https://github.com/KonstantinSmelov/Gateway/actions/workflows/maven.yml)
 [![codecov](https://codecov.io/gh/KonstantinSmelov/Gateway/branch/mvp6/graph/badge.svg)](https://codecov.io/gh/KonstantinSmelov/Gateway)
