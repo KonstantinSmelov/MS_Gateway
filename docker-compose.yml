@@ -1,0 +1,112 @@
+version: "3"
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    container_name: zoo
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+    networks:
+      - kafkanet
+
+  kafka:
+    image: confluentinc/cp-kafka
+    container_name: kafka
+
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - kafkanet
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=credit_db
+    networks:
+      - kafkanet
+
+  conveyor:
+    build: ../Conveyor
+    container_name: conveyor
+    networks:
+      - kafkanet
+
+  deal:
+    build: ../Deal
+    container_name: deal
+
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - zookeeper
+      - kafka
+      - postgres
+      - conveyor
+    networks:
+      - kafkanet
+
+  application:
+    build: ../Application
+    container_name: application
+
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - zookeeper
+      - kafka
+      - postgres
+      - conveyor
+      - deal
+    networks:
+      - kafkanet
+
+  dossier:
+    build: ../Dossier
+    container_name: dossier
+
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - zookeeper
+      - kafka
+      - postgres
+      - conveyor
+      - deal
+      - application
+    networks:
+      - kafkanet
+
+  gateway:
+    build: ../Gateway
+    container_name: gateway
+    ports:
+      - "8090:8090"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - zookeeper
+      - kafka
+      - postgres
+      - conveyor
+      - deal
+      - application
+      - dossier
+    networks:
+      - kafkanet
+
+volumes:
+  pgdata:
+
+networks:
+  kafkanet:
