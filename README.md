@@ -1,7 +1,15 @@
-# MS-Gateway + docker-compose.yml (в корне проекта)
+# Микросервис №5 - Gateway
 
-[![Build status](https://github.com/KonstantinSmelov/Gateway/actions/workflows/maven.yml/badge.svg)](https://github.com/KonstantinSmelov/Gateway/actions/workflows/maven.yml)
-[![codecov](https://codecov.io/gh/KonstantinSmelov/Gateway/branch/mvp6/graph/badge.svg)](https://codecov.io/gh/KonstantinSmelov/Gateway)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=KonstantinSmelov_Gateway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=KonstantinSmelov_Gateway)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=KonstantinSmelov_Gateway&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=KonstantinSmelov_Gateway)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=KonstantinSmelov_Gateway&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=KonstantinSmelov_Gateway)
+ ***Функция:*** реализация паттерна Gateway для всех остальных микросервисов
+
+Входит в состав микросервисного приложения "Кредитный конвеер", состоящего из 5 микросервисов:
+
+* [Микросервис №1 Credit Conveyor (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Conveyor)
+* [Микросервис №2 Deal (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Deal)
+* [Микросервис №3 Application (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Application)
+* [Микросервис №4 Dossier (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Dossier)
+
+
+***Общая архитектура:***
+
+![Alt-текст](https://i.postimg.cc/GhvqX3xN/1.png)
